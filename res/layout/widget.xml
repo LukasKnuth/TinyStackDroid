@@ -6,35 +6,57 @@
   android:background="@drawable/background">
   
   <ImageView android:id="@+id/avatar"
-  	android:layout_width="wrap_content"
-  	android:layout_height="wrap_content"
   	android:paddingLeft="20dp"
   	android:layout_centerVertical="true"
+  	style="@style/Base"
   />
   
   <TextView android:id="@+id/name"
-  	android:layout_width="fill_parent"
-  	android:layout_height="wrap_content"
-  	android:layout_alignParentLeft="true"
-  	android:gravity="right"
   	android:paddingTop="22dp"
-  	android:paddingRight="18dp"
+  	style="@style/Base.RightBounded.View_Name"
+  />
+  <ImageView 
+  	android:layout_toLeftOf="@id/name"
+  	android:src="@drawable/so_logo"
+  	android:paddingLeft="4dp"
+  	android:paddingTop="20dp"
+  	style="@style/Base"
   />
   
   <TextView android:id="@+id/reputation"
-  	android:layout_width="fill_parent"
-  	android:layout_height="wrap_content"
   	android:layout_below="@id/name"
-  	android:gravity="right"
-  	android:paddingRight="18dp"
+  	style="@style/Base.RightBounded.View_Reputation"
   />
   
-  <TextView android:id="@+id/badges"
-  	android:layout_width="fill_parent"
-  	android:layout_height="wrap_content"
-  	android:layout_below="@id/reputation"
-  	android:gravity="right"
+  <!-- Showing the Badges -->
+  
+  <TextView android:id="@+id/badge_bronze"
+  	android:layout_alignParentRight="true"
   	android:paddingRight="18dp"
+  	style="@style/Base.View_Badges.Text"
+  />
+  <ImageView android:id="@+id/badge_bronze_img"
+  	android:layout_toLeftOf="@id/badge_bronze"
+  	android:src="@drawable/badge_bronze"
+  	style="@style/Base.View_Badges.Image"
+  />
+  <TextView android:id="@+id/badge_silver"
+  	android:layout_toLeftOf="@id/badge_bronze_img"
+  	style="@style/Base.View_Badges.Text"
+  />
+  <ImageView android:id="@+id/badge_silver_img"
+  	android:layout_toLeftOf="@id/badge_silver"
+  	android:src="@drawable/badge_silver"
+  	style="@style/Base.View_Badges.Image"
+  />
+  <TextView android:id="@+id/badge_gold"
+  	android:layout_toLeftOf="@id/badge_silver_img"
+  	style="@style/Base.View_Badges.Text"
+  />
+  <ImageView android:id="@+id/badge_gold_img"
+  	android:layout_toLeftOf="@id/badge_gold"
+  	android:src="@drawable/badge_gold"
+  	style="@style/Base.View_Badges.Image"
   />
   
 </RelativeLayout>

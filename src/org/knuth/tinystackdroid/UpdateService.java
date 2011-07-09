@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 
 public class UpdateService extends Service{
@@ -30,8 +31,6 @@ public class UpdateService extends Service{
 			RemoteViews updatedViews = this.buildUpdate(this, user_id);
 			// Push to the Widget on the Home-Screen
 			AppWidgetManager widget_manager = AppWidgetManager.getInstance(this);
-			// UPDATE NUR FÜR INSTANZ MIT ÜBERGEBENER ID ANFORDERN!
-			// ÜBER ÜBERGEBENE ID DIE PREFERENCE MIT DER USER-ID LADEN!
 			widget_manager.updateAppWidget(widget_id, updatedViews);
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
@@ -52,9 +51,21 @@ public class UpdateService extends Service{
 		RemoteViews views = new RemoteViews(
 				context.getPackageName(), R.layout.widget);
 		views.setTextViewText(R.id.name, flair.name);
-		views.setTextViewText(R.id.badges, flair.getBadgesString());
 		views.setTextViewText(R.id.reputation, flair.reputation+"");
 		views.setBitmap(R.id.avatar, "setImageBitmap", flair.getAvatar());
+		// Set the Badges:
+		if (flair.badge_bronze > 0){
+			views.setTextViewText(R.id.badge_bronze, flair.badge_bronze+"");
+			views.setViewVisibility(R.id.badge_bronze_img, View.VISIBLE);
+		}
+		if (flair.badge_silver > 0){
+			views.setTextViewText(R.id.badge_silver, flair.badge_silver+"");
+			views.setViewVisibility(R.id.badge_silver_img, View.VISIBLE);
+		}
+		if (flair.badge_gold > 0){
+			views.setTextViewText(R.id.badge_gold, flair.badge_gold+"");
+			views.setViewVisibility(R.id.badge_gold_img, View.VISIBLE);
+		}
 		// Return the updated Views:
 		return views;
 	}

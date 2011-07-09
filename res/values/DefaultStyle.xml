@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<!-- The Base for al styles for the Widgets Layout -->
+	<style name="Base">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+	
+	<!-- Adjust the TextViews -->
+	<style name="Base.RightBounded">
+		<item name="android:layout_alignParentRight">true</item>
+		<item name="android:paddingRight">18dp</item>
+	</style>
+	
+	<!-- The TextView showing the Name -->
+	<style name="Base.RightBounded.View_Name">
+		<item name="android:textColor">#258bd3</item>
+	</style>
+	
+	<!-- The TextView showing the Reputation-count -->
+	<style name="Base.RightBounded.View_Reputation">
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">#5f5f5f</item>
+	</style>
+	
+	<!-- For everything showing badges -->
+	<style name="Base.View_Badges">
+		<item name="android:layout_below">@id/reputation</item>
+	</style>
+	<!-- The TextView showing the awarded Badges -->
+	<style name="Base.View_Badges.Text">
+		<item name="android:textColor">#808185</item>
+	</style>
+	<!-- The ImageView showing the Badge-Logo -->
+	<style name="Base.View_Badges.Image">
+		<item name="android:paddingTop">4dp</item>
+		<item name="android:paddingLeft">4dp</item>
+		<item name="android:visibility">invisible</item>
+	</style>
+
+</resources>
