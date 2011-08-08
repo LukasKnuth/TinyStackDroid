@@ -15,6 +15,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
+/**
+ * The Service which the Widget-Updates and
+ *  adds the loaded values in the Views.
+ * @author Lukas Knuth
+ *
+ */
 public class UpdateService extends Service{
 
 	@Override
@@ -42,6 +48,17 @@ public class UpdateService extends Service{
 		return START_NOT_STICKY;
 	}
 	
+	/**
+	 * Query's the API and inserts the new Values in
+	 *  the Widget. 
+	 * @param context The Application-Context
+	 * @param user_id The Users ID (for the API-Query).
+	 * @return The updated Widget using RemoteViews
+	 * @throws ApiException Thrown when the API couldn't
+	 *  be queried (no connection for example).
+	 * @throws ParseException Thrown when the API-response
+	 *  couldn't be parsed (broken or unfinished response).
+	 */
 	public RemoteViews buildUpdate(Context context, String user_id)
 			throws ApiException, ParseException{
 		// Get the values form the API

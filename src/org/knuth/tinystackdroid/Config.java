@@ -11,6 +11,11 @@ import android.widget.EditText;
 
 import org.knuth.tinystackdroid.R;
 
+/**
+ * The Configuration-Activity for the Widget.
+ * @author Lukas Knuth
+ *
+ */
 public class Config extends Activity{
 	
 	/** The provided Widget ID */
@@ -26,6 +31,9 @@ public class Config extends Activity{
 	/** The Name for the Intent-Extra, containing the Widget-ID */
 	public final static String EXTRA_WIDGET_ID = "widget_id";
 	
+	/**
+	 * Create the GUI and check if the Widget-ID is valid.
+	 */
 	public void onCreate(Bundle bundle){
 		super.onCreate(bundle);
 		// Set the result to CANCELED.  This will cause the widget host to cancel
@@ -49,8 +57,12 @@ public class Config extends Activity{
 		this.findViewById(R.id.submit).setOnClickListener(submit);
 	}
 	
+	/**
+	 * onClickListener for the "submit"-button.
+	 */
 	View.OnClickListener submit = new View.OnClickListener() {
 		
+		@SuppressWarnings("static-access")
 		@Override
 		public void onClick(View v) {
 			// Get the Context:
@@ -69,13 +81,25 @@ public class Config extends Activity{
 		}
 	};
 	
-	private void saveUserID(Context context, String text){
+	/**
+	 * Saves the User-ID to the new Widgets-ID using SharedPreferences.
+	 * @param context The Application-Context
+	 * @param user_id The User-ID
+	 */
+	private void saveUserID(Context context, String user_id){
 		SharedPreferences.Editor prefs = context.getSharedPreferences(
 				PREF_NAME, 0).edit();
-		prefs.putString(PREF_KEY_PREFIX	+ widget_id, text);
+		prefs.putString(PREF_KEY_PREFIX	+ widget_id, user_id);
 		prefs.commit();
 	}
 	
+	/**
+	 * Loads the saved User-ID by using the given Widget-ID.
+	 * @param context The Application-Context
+	 * @param widget_id The ID of the Widget which User-ID should
+	 *  be loaded.
+	 * @return The User-ID of the given Widget.
+	 */
 	public static String loadUserID(Context context, int widget_id){
 		SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, 0);
 		String prefix = prefs.getString(PREF_KEY_PREFIX + widget_id, null);
